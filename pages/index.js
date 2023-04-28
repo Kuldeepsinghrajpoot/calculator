@@ -10,9 +10,7 @@ export default function Home() {
 
 function handleClick(e){
   // console.log("click");
-  if(sum==='0'){
-    setNumber("");
-  }
+  
   setNumber((number.concat(e.target.name)));
 }
 const calculateResult=()=>{
@@ -20,7 +18,8 @@ const calculateResult=()=>{
 
 }
 const clear=()=>{
- 
+ setSum("");
+ setNumber("");
 }
 
   return (
