@@ -1,118 +1,95 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+"use client"
+import React, {useState } from 'react'
+import Head from 'next/head';
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [date, setDate] = useState(new Date());
+  const [number, setNumber] = useState('');
+  const [sum, setSum] = useState('');
+
+function handleClick(e){
+  // console.log("click");
+  if(sum==='0'){
+    setNumber("");
+  }
+  setNumber((number.concat(e.target.name)));
+}
+const calculateResult=()=>{
+  setSum(eval(number).toString());
+
+}
+const clear=()=>{
+ 
+}
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+    <Head>
+      <title>Calculator</title>
+    </Head>
+    <div className=" dark:bg-gray-800 w-screen fixed flex justify-center">
+   Kuldeep Singh Rajpoot
+ </div>
+    <div className="bg-gray-200 w-screen h-screen flex justify-center items-center">
+    <div className="w-64 h-auto bg-white rounded-2xl shadow-xl border-4 border-gray-100">
+      <div className="w-auto mx-3 my-2 h-6 flex justify-between">
+        <div className="text-sm">
+          Calculator
+          {/* {date.getHours() + ":" + date.getMinutes()} */}
+        </div>
+        <div className="flex items-center text-xs space-x-1">
+          <i className="fas fa-signal"></i>
+          <i className="fas fa-wifi"></i>
+          <i className="fas fa-battery-three-quarters text-sm"></i>
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="w-auto m-3 h-28 text-right space-y-2 py-2">
+        <div className="text-gray-700">{number}</div>
+        <div className="text-black font-bold text-3xl">{sum}</div>
       </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="w-auto m-1 h-auto mb-2">
+        <div className="m-2 flex justify-between">
+          <button onClick={clear} name='c' className="btn-yellow cursor-pointer" >C</button>
+          <button onClick={handleClick} name=')' className="btn-grey cursor-pointer">(</button>
+          <button onClick={handleClick} name='(' className="btn-grey cursor-pointer">)</button>
+          <button onClick={handleClick} name='/' className="btn-orange cursor-pointer">/</button>
+        </div>
+        <div className="m-2 flex justify-between">
+          <button onClick={handleClick} name="7" className="btn-grey cursor-pointer">7</button>
+          <button onClick={handleClick} name="8" className="btn-grey cursor-pointer">8</button>
+          <button onClick={handleClick} name="9" className="btn-grey cursor-pointer">9</button>
+          <button onClick={handleClick} name="*" className="btn-orange cursor-pointer">x</button>
+        </div>
+        <div    className="m-2 flex justify-between">
+          <button onClick={handleClick} name="4" className="btn-grey cursor-pointer">4</button>
+          <button onClick={handleClick} name="5" className="btn-grey cursor-pointer">5</button>
+          <button onClick={handleClick} name="6" className="btn-grey cursor-pointer">6</button>
+          <button onClick={handleClick} name="-" className="btn-orange cursor-pointer">-</button>
+        </div>
+        <div className="m-2 flex justify-between">
+      <button  name="1"className="btn-grey cursor-pointer" onClick={handleClick}>1</button>
+          <button onClick={handleClick} name="2" className="btn-grey cursor-pointer">2</button>
+          <button onClick={handleClick} name="3" className="btn-grey cursor-pointer">3</button>
+          <button onClick={handleClick} name="+" className="btn-orange cursor-pointer">+</button>
+        </div>
+          <div className="m-2 flex justify-between">
+          <button onClick={handleClick}  name='0' className="btn-grey-jumbo cursor-pointer">0</button>
+          <div className="flex w-full ml-3 justify-between">
+            <button onClick={handleClick} name='.'  className="btn-grey cursor-pointer">.</button>
+            <button onClick={calculateResult} id='sum'  className="btn-green cursor-pointer">Ans</button>
+          </div>
+        </div>
+        <div className="flex justify-center mt-5">
+          <div className="w-20 h-1 bg-gray-100 rounded-l-xl rounded-r-xl"></div>
+        </div>
       </div>
-    </main>
+    </div>
+    
+
+
+
+  </div>
+    </>
   )
 }
